@@ -1,84 +1,72 @@
 
 
 function Perceptron(){
-    this.tauxApprentissage = 0.2;
-    this.seuilActivation = 0.5;
-    this.reseauNeronaux = [];
-    this.reaseauDeSortie = [];
+    this.tauxApprentissage = 0.1;
+    this.seuil = 1;
 
-    this.nombreElementApprendre = 10;
+    this.reseauDEntree = [];
+    this.reseauDeSortie = [];
 }
 
-Perceptron.prototype.initialiserReseauxNeuronaux = function (nombreDeCase, nombreDeValeurApprendre) {
-    for (var i = 0; i < nombreDeCase; ++i){
-        this.reseauNeronaux[i] = [];
-        for(var j =0; j < nombreDeValeurApprendre; ++j){
-            this.reseauNeronaux[i][j] = 1;
+Perceptron.prototype.initialiserReseauxNeuronaux = function (nbNeuronesEnEntree, nbNeuronesEnSortie) {
+    for (var i = 0; i < nbNeuronesEnEntree; ++i){
+        this.reseauDEntree[i] = [];
+        for(var j =0; j < nbNeuronesEnSortie; ++j){
+            this.reseauDEntree[i][j] = 1;
         }
     }
 
-    this.initialiserReseauxNeuronauxSortie(nombreDeValeurApprendre);
-}
+    this.initialiserReseauxNeuronauxSortie(nbNeuronesEnSortie);
+};
 
-Perceptron.prototype.initialiserReseauxNeuronauxSortie = function (nombreDeValeurApprendre){
-    for(var i = 0; i < nombreDeValeurApprendre; ++i){
-        this.reaseauDeSortie[i] = 1;
+Perceptron.prototype.initialiserReseauxNeuronauxSortie = function (nbNeuronesEnSortie){
+    for(var i = 0; i < nbNeuronesEnSortie; ++i){
+        this.reseauDeSortie[i] = 1;
     }
 }
 
 Perceptron.prototype.apprendre = function (tableDePixels, nombreApprendre){
-    var resultat = 0;
-    var compteurCycle = 0;
-    var sommePondere = 0;
-    var erreurs = true;
 
-    var etatPixelTester = 0;
+    this.chercher(tableDePixels);
 
-    while(erreurs){
-        erreurs = false;
-        ++compteurCycle;
+    for (var y = 0; y < this.reseauDEntree.length; y++) {
+        for (var x = 0; x < this.reseauDEntree[y].length; x++) {
+            if (this.reseauDEntree[y][x] != -1) {
+                var valeurAttendue = 0;
 
-        for(var i = 0; i < 20; ++i){
-            sommePondere = 0;
-
-            for(var j = 0; j < this.nombreElementApprendre; ++j){
-                if(tableDePixels[i]){
-                    etatPixelTester = 1;
-                }else{
-                    etatPixelTester = 0;
+                if (x == nombreApprendre) {
+                    valeurAttendue = 1;
                 }
 
-                sommePondere += etatPixelTester * this.reseauNeronaux[j][parseInt(nombreApprendre)];
+                var neuroneActif = this.reseauDeSortie[x] > this.seuil ? 1 : 0;
+
+                this.reseauDEntree[y][x] = this.reseauDEntree[y][x] + this.tauxApprentissage * (valeurAttendue - neuroneActif) * tableDePixels[y];
             }
-
-            resultat = ( sommePondere > this.seuilActivation ) ? 1 : 0;
-
-            for(var j = 0; j < this.nombreElementApprendre; ++j){
-                this.reseauNeronaux[j][parseInt(nombreApprendre)] +=   this.tauxApprentissage *  (this.reaseauDeSortie[i] - resultat) * this.reseauNeronaux[i][j];
-            }
-
-            if(this.reaseauDeSortie[i] - resultat != 0){
-                erreurs = true;
-            }
-
         }
+    }
+};
 
-        sommePondere;
+Perceptron.prototype.chercher = function (tableauDePixels) {
+
+    this.initialiserReseauxNeuronauxSortie(this.reseauDEntree[0].length);
+
+    for (var y = 0; y < this.reseauDEntree.length; y++) {
+        for (var x = 0; x < this.reseauDEntree[y].length; x++) {
+            if (this.reseauDEntree[y][x] != -1) {
+                this.reseauDeSortie[x] += this.reseauDEntree[y][x] * tableauDePixels[y];
+            }
+        }
     }
 
-}
+    var nombresReconnus = [];
 
-Perceptron.prototype.chercher = function (tableDePixels){
-    tableDePixels;
-}
+    for (var nb = 0; nb < this.reseauDEntree[0].length; nb++) {
+        if (this.reseauDeSortie[nb] > this.seuil) {
+            nombresReconnus.push(nb.toString());
+        }
+    }
 
-function calculFormulePoid() {
+    console.log(this.reseauDeSortie);
 
-    var poidDeLaConnexion = 0;
-    var tauxApprentissage = 0;
-    var sortieAttendu = 0;
-    var sortieObtenu = 0;
-    var entree = 0;
-
-    return poidDeLaConnexion + tauxApprentissage * (sortieAttendu - sortieObtenu) * entree;
-}
+    return nombresReconnus;
+};
