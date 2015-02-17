@@ -1,41 +1,60 @@
 <html>
 <head>
-  <script src="webroot/js/jquery-1.10.2.min.js"></script>
-    <script src="webroot/js/perceptron.js"></script>
-    <script src="webroot/js/initialisationAffichageCanvas.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <title>Perceptron</title>
 
+    <link rel="stylesheet" href="webroot/css/bootstrap.min.css">
+    <link rel="stylesheet" href="webroot/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+    <script type="text/javascript" src="webroot/js/jquery/jquery-1.11.2.min.js"></script>
+    <script type="text/javascript" src="webroot/js/bootstrap/bootstrap.min.js"></script>
+    <script type="text/javascript" src="webroot/js/canvas/Chart.min.js"></script>
 
-    <link rel="stylesheet" type="text/css"  href="webroot/css/style.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
 
 </head>
 
 <body onLoad="init();">
-    <canvas id="canvas" width="300" height="400" style="float:left">
-        alternate content
-    </canvas>
-    <div class="row">
-        <div class="col-md-6">
-            <button type="button"  onclick="resetCanvas()" class="btn btn-info btn-sm">Reset canvas</button>
-            <br/><br/>
-            <input type="text" id="inputNumber">
-            <input type="submit" value="Learn" class="btn btn-success btn-sm" onclick="learnClicked()"/><br/></br>
-            <input type="text" id="outputNumber">
-            <input type="button" class="btn btn-success btn-sm" value="Process" onclick="processClicked()"/><br/>
-        </div>
+
+
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="">Perceptron</a>
+                </div>
+            </div>
+        </nav>
+
 
         <div class="col-md-6">
-            <table class="table">
-                <tr class="info">
-                </tr>
-            </table>
+            <canvas id="canvas" width="300" height="400" style="float:left">
+                alternate content
+            </canvas>
+
+            <button type="button"  onclick="resetCanvas()" class="btn btn-warning btn-sm">Reset canvas</button>
+            <br/><br/>
+
+            <input type="text" id="inputNumber">
+            <input type="submit" value="Learn" class="btn btn-primary btn-sm" onclick="learnClicked()"/><br><br>
+
+            <input type="text" id="outputNumber">
+            <input type="button" class="btn btn-primary btn-sm" value="Process" onclick="processClicked()"/>
+            <br>
+
+            <input type="text" size="2" id="seuil" value="1" />
+            <button type="button" class="btn btn-primary btn-xs" onclick="changeSeuil()">Changer le seuil</button>
+<br><br>
+
+            <a class="btn btn-default" role="button" href="documentation.html">Voir la documentation</a>
+
         </div>
-    </div>
+        <canvas id="chart" width="400" height="400" style="width: 400px; height: 400px;"></canvas>
+
 </body>
+
 </html>
+
+<script type="text/javascript" src="webroot/js/tableauDesPoidsEtSeuilDActivation.js"></script>
+<script src="webroot/js/perceptron.js"></script>
+<script src="webroot/js/initialisationAffichageCanvas.js"></script>
