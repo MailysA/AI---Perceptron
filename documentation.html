@@ -1,0 +1,89 @@
+<head>
+
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="webroot/css/style.css">
+
+    <script type="text/javascript" src="webroot/js/bootstrap/bootstrap.min.js"></script>
+    <script type="text/javascript" src="webroot/js/jquery/jquery-1.11.2.min.js"></script>
+    <script type="text/javascript" src="webroot/js/canvas/Chart.min.js"></script>
+
+    <script src= "http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+<body>
+
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="index.html">Perceptron</a>
+        </div>
+    </div>
+</nav>
+<h2><p class="center">Documentation du Perceptron</p></h2>
+
+<div id="marge">
+
+    <u>Les développeurs</u>
+   <b><h6>Airouche Maïlys<br>
+    Vermersch Théo</h6></b>
+
+<h3>Description de l'applicatif</h3>
+<p>
+Le perceptron est un réseau de neurone simple.
+Grâce a la formule <kbd><var> P = P + t * (A – O) * E </var></kbd> nous avons réalisé le perceptron basé sur un apprentissage <i>supervisé</i>.<br>
+Pour réaliser le perceptron, nous sommes partis d'une base graphique correspondant à une grille de pixels en 3 dimensions:</p>
+    <p>
+        - axe des ordonnées<br>
+        - axe des abcisses<br>
+        - chiffre à apprendre de 1 à 9 <br/>
+    <p/>
+
+    <p>
+        Chaque pixel contient un poids qui est calculé avec la formule précédemment écrite. Ce poids diffère en fonction du chiffre à faire apprendre.
+    </p>
+
+<h3>Rôle des fichiers dans le projet</h3>
+
+<p>"initialisationAffichageCanvas.js" affiche le canvas représentant la grille numérique.</p>
+    <p>"seuil.js" permet d'initialiser le seuil à 1 et d'appliquer les changements de seuil paramétrable depuis l'ihm.</p>
+    <p>"perceptron.js" permet de créer un reseau de neurone simple prenant en compte une couche d'entrée et de sortie et connectées ensembles.
+    Dans ce fichier se trouve l'algorithme correspondant à l'apprentissage des chiffres de 1 à 9 ainsi que l'algorithme permettant de chercher et reconnaitre ces chiffres grâce a la formule.</p>
+
+    <table class="table table-condensed">
+        <thead>
+        <tr>
+            <h4><th>Librairies</th>
+                <th>Description</th>
+                <th>Place</th></h4>
+        </tr>
+        </thead>
+
+        <tr><td>Jquery</td><td>permet d'utiliser les librairies Chart et Bootstrap</td><td>/webroot/js/jquery/</td></tr>
+        <tr><td>Chart (en Bars)</td><td>affiche un graphe en Bars correspondant a chaque chiffre appris en fonction du poids</td><td>/webroot/js/canvas/</td></tr>
+        <tr><td>Boostrap</td><td>un visuel plus agréable pour l'utilisateur</td><td>javascript: /webroot/js/bootstrap/ </br>css: /webroot/css/</td></tr>
+        <tr><td>AngularJS</td><td>permet d'afficher ou cacher les outils</td><td>Lien</td></tr>
+    </table>
+
+<h3>Evolution possible</h3>
+
+    <p>La création d'un halo sur les pixels allumés afin d'améliorer le processus de reconnaissance des chiffres.</p>
+    <p>Rendre paramétrable via l'IHM le nombre de pixels du tableau numérique.</p>
+    <p>Ajouter une couche en plus caché permettant au perceptron d'être plus performant en reconnaissant plus vite le chiffre.<br>
+        Par exemple en linéarisant les données d'entrées afin de réaliser des traitements plus poussés.</p>
+
+    <br>
+
+<h3>Compatibilité</h3>
+           - Internet Explorer<br>
+            - Firefox<br>
+            - Google Chrome<br>
+
+<h3>Outils</h3>
+            - WebStorm<br>
+            - Github<br>
+            - gitRaw<br>
+
+    </div>
+
+</body>
