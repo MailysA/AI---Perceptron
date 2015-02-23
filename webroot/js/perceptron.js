@@ -1,6 +1,6 @@
 
 function Perceptron(){
-    this.tauxApprentissage = 0.1;
+    this.tauxApprentissage = 0.9;
     this.reseauDEntree = [];
     this.reseauDeSortie = [];
 }
