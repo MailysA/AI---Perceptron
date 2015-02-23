@@ -46,9 +46,8 @@ Pour réaliser le perceptron, nous sommes partis d'une base graphique correspond
 <h3>Rôle des fichiers dans le projet</h3>
 
 <p>"initialisationAffichageCanvas.js" affiche le canvas représentant la grille numérique.</p>
-    <p>"seuil.js" permet d'initialiser le seuil à 1 et d'appliquer les changements de seuil paramétrable depuis l'ihm.</p>
     <p>"perceptron.js" permet de créer un reseau de neurone simple prenant en compte une couche d'entrée et de sortie et connectées ensembles.
-    Dans ce fichier se trouve l'algorithme correspondant à l'apprentissage des chiffres de 1 à 9 ainsi que l'algorithme permettant de chercher et reconnaitre ces chiffres grâce a la formule.</p>
+Dans ce fichier se trouve l'algorithme correspondant à l'apprentissage des chiffres de 1 à 9 ainsi que l'algorithme permettant de chercher et reconnaitre ces chiffres grâce a la formule.</p>
 
     <table class="table table-condensed">
         <thead>
@@ -67,11 +66,12 @@ Pour réaliser le perceptron, nous sommes partis d'une base graphique correspond
 
 <h3>Evolution possible</h3>
 
-    <p>La création d'un halo sur les pixels allumés afin d'améliorer le processus de reconnaissance des chiffres.</p>
+    <p>L'enregistrement d'un halo sur les pixels allumés consistant à leur renseigner un poids faible afin d'améliorer le processus de reconnaissance quelque soit la forme du chiffre.</p>
     <p>Rendre paramétrable via l'IHM le nombre de pixels du tableau numérique.</p>
-    <p>Ajouter une couche en plus caché permettant au perceptron d'être plus performant en reconnaissant plus vite le chiffre.<br>
-        Par exemple en linéarisant les données d'entrées afin de réaliser des traitements plus poussés.</p>
-
+    <p>Ajouter une couche en plus caché.
+     Enregistrer un chiffre en calculant une suite des pixels allumés à partir d’un pixel choisit.
+        Ainsi, on établit une suite logique des fils allumés (pixels adjacents) en leur attribuant un poids différent à chaque fois en fonction de leur position par rapport au pixel mère.
+</p>
     <br>
 
 <h3>Compatibilité</h3>
